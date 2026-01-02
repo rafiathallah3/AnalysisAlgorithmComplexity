@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import time
 import sys
+import argparse
 
 sys.setrecursionlimit(10000)
 
@@ -41,15 +42,19 @@ def pangkat_rekursif_cepat(x, n):
         return x * bagi * bagi
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Visualize algorithm complexity for exponentiation")
+    parser.add_argument("--input", type=int, default=10000, help="Maximum range value for n (the exponent)")
+    args = parser.parse_args()
+    
     angka = 2
     
-    semua_n = range(1, 10001, 20)
+    semua_n = range(1, args.input + 1, 20)
     
     waktu_rekursif_naif = []
     waktu_iterasi_naif = []
     waktu_rekursif_cepat = []
 
-    print(f"Dimulai dengan angka = {angka}, dan n dari 1 sampe {semua_n.stop}...")
+    print(f"Dimulai dengan angka = {angka}, dan n dari 1 sampe {args.input}...")
     
     for n in semua_n:
         waktu_mulai = time.perf_counter()
